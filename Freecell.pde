@@ -18,6 +18,8 @@ int yOffset = 28;  //To be set manually.
 float savedGameWritingDurationLeft = 0;
 int loadingWritingDurationLeft = 0;
 boolean isLoading = false;
+final String loadingWriting = "CARICAMENTO...";
+final String savedGameWriting = "PARTITA SALVATA";
 //Global variables.
 
 void settings()
@@ -38,9 +40,9 @@ void setup()
     background(60, 145, 50);
     bar.render();
     fill(0);
-    rect(width/2-textWidth("CARICAMENTO...")/2-border, height-height/5-28, textWidth("CARICAMENTO...")+border*2, textSize*2);
+    rect(width/2-textWidth(loadingWriting)/2-border, height-height/5-28, textWidth(loadingWriting)+border*2, textSize*2);
     fill(255);
-    text("CARICAMENTO...", width/2-textWidth("CARICAMENTO...")/2, height-height/5);
+    text(loadingWriting, width/2-textWidth(loadingWriting)/2, height-height/5);
     isLoading = true;
     loadingWritingDurationLeft = 1;
   }
@@ -60,9 +62,9 @@ void draw()
       load(loadJSONObject("savedGame.json"));
     }
     fill(0);
-    rect(width/2-textWidth("CARICAMENTO...")/2-border, height-height/5-28, textWidth("CARICAMENTO...")+border*2, textSize*2);
+    rect(width/2-textWidth(loadingWriting)/2-border, height-height/5-28, textWidth(loadingWriting)+border*2, textSize*2);
     fill(255);
-    text("CARICAMENTO...", width/2-textWidth("CARICAMENTO...")/2, height-height/5);
+    text(loadingWriting, width/2-textWidth(loadingWriting)/2, height-height/5);
   }
   else
   {
@@ -70,9 +72,9 @@ void draw()
     if(savedGameWritingDurationLeft > 0)
     {
       fill(0);
-      rect(width/2-textWidth("PARTITA SALVATA")/2-border, height-height/5-28, textWidth("PARTITA SALVATA")+border*2, textSize*2);
+      rect(width/2-textWidth(savedGameWriting)/2-border, height-height/5-28, textWidth(savedGameWriting)+border*2, textSize*2);
       fill(255);
-      text("PARTITA SALVATA", width/2-textWidth("PARTITA SALVATA")/2, height-height/5);
+      text(savedGameWriting, width/2-textWidth(savedGameWriting)/2, height-height/5);
       savedGameWritingDurationLeft--;
     }
     else if(savedGameWritingDurationLeft == 0)
