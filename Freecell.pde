@@ -37,10 +37,12 @@ void settings()
 
 void setup()
 {
+  surface.setTitle("Freecell");
+  surface.setLocation(displayWidth / 2 - width / 2, displayHeight / 2 - height / 2 - height / 25);
   frameRate(frameRate);
   textSize(textSize);
   bar = new Bar();
-  
+
   if(loadJSONObject("savedGame.json").getBoolean("isSaved"))
   {
     background(60, 145, 50);
