@@ -7,14 +7,14 @@ ArrayList<Deck> undos = new ArrayList<Deck>(); //Object to store the moves.
 
 //Global variables.
 int frameRate = 30;
-int edge = 4;
-int border = 12;
-int cardWidth = 125;
-int cardHeight = 175;
-int cardsetSpace = 20;
-int cardSpace = (int)(cardHeight/4.6);
-int textSize = 20;
-int yOffset = 28;  //To be set manually.
+int cardWidth;
+int cardHeight;
+int border;
+int edge;
+int cardsetSpace;
+int cardSpace;
+int textSize;
+int yOffset;
 float savedGameWritingDurationLeft = 0;
 int loadingWritingDurationLeft = 0;
 boolean isLoading = false;
@@ -24,9 +24,15 @@ final String savedGameWriting = "PARTITA SALVATA";
 
 void settings()
 {
-  int w = cardWidth*8 + cardsetSpace*9;
-  int h = cardHeight*5 + textSize*2;
-  size(w, h);
+  cardWidth = (int) (displayWidth / 15.36);
+  cardHeight = (int) (displayHeight / 6.17);
+  border = cardWidth / 10;
+  edge = border / 3;
+  cardsetSpace = border + edge * 2;
+  cardSpace = (int) (cardHeight / 4.6);
+  textSize = displayHeight / 54;
+  yOffset = textSize + 8;
+  size(cardWidth * 8 + cardsetSpace * 9, cardHeight * 5 + textSize * 2);
 }
 
 void setup()
